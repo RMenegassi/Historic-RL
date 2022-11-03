@@ -38,7 +38,7 @@ const App = () => {
           changeBackDay={changeBackDay}
           changeNextDay={changeNextDay}
         />
-        <BoxMatch>Partida {results.match || 1}</BoxMatch>
+        <BoxMatch>Partida {results.victory + results.loss || 1}</BoxMatch>
 
         <ButtonBox title="Vitória" color="#0A2ACC" callback={addVictory} />
         <ButtonBox title="Derrota" color="#FC540C" callback={addLoss} />
