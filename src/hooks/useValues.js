@@ -1,64 +1,48 @@
 import {useState, useEffect} from 'react';
 import moment from 'moment';
 
-import {getResults, saveResults} from '../services/Results';
+import {getResults, saveResults, getExample} from '../services/Results';
 
 const useValues = (day = moment().format('DD/MM/YYYY')) => {
   const [results, setResults] = useState({});
 
   const addVictory = () => {
     setResults({
-      id: results.day,
-      day: results.day,
+      ...results,
       victory: results.victory + 1,
-      loss: results.loss,
-      match: results.match + 1,
     });
   };
 
   const removeVictory = () => {
     setResults({
-      id: results.day,
-      day: results.day,
+      ...results,
       victory: results.victory - 1,
-      loss: results.loss,
-      match: results.match - 1,
     });
   };
 
   const addLoss = () => {
     setResults({
-      id: results.day,
-      day: results.day,
-      victory: results.victory,
+      ...results,
       loss: results.loss + 1,
-      match: results.match + 1,
     });
   };
 
   const removeLoss = () => {
     setResults({
-      id: results.day,
-      day: results.day,
-      victory: results.victory,
+      ...results,
       loss: results.loss - 1,
-      match: results.match - 1,
     });
   };
 
   const clearResults = () => {
-    setResults({
-      id: results.day,
-      day: results.day,
-      victory: 0,
-      loss: 0,
-      match: 1,
-    });
+    setResults({...results, victory: 0, loss: 0});
   };
 
   useEffect(() => {
     const loadDB = async () => {
       const data = await getResults(day);
+      const data2 = await getExample(day);
+      console.log(data2);
       const resultsDB =
         data.length > 0
           ? data[0]
