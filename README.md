@@ -1,5 +1,5 @@
 
-<h1 align="center"> historic Rocket League</h1>
+<h1 align="center"> Historic Rocket League</h1>
 
 <p align="center">
 App feito como forma de estudo para praticar conceitos de React Native
